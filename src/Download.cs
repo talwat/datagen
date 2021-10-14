@@ -7,7 +7,7 @@ namespace Download {
         public static int DownloadFile(string url, string destinationPath) {
             Console.WriteLine("Downloading " + url);
             try {
-                webClient.DownloadFile(url, destinationPath);
+                webClient.DownloadFile(url, destinationPath + "...");
                 Console.WriteLine("Downloaded File Successfully!");
                 return 0;
             }

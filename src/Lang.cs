@@ -13,7 +13,8 @@ namespace Lang {
                 System.Console.WriteLine("Would you like to download the latest language file from the github repository? (y/n)");
                 string answer = System.Console.ReadLine();
                 if(answer == "y") {
-                    //Download Lang File
+                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang.txt", "lang.txt");
+                    lines = System.IO.File.ReadAllLines(@"lang.txt");
                 }
                 else {
                     System.Environment.Exit(0);
