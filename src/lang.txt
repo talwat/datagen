@@ -1,4 +1,5 @@
 #LANGUAGE FILE
 
 filePathError: Datagen cannot find the path specified.|
+commandNotFound: is not recognized as a command.|
 error: An error occured.|

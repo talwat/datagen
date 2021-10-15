@@ -5,7 +5,7 @@ namespace Lang {
         public static Dictionary<string, string> messages = new Dictionary<string, string>();
         public static string[] lines;
         public static void LoadLang() {
-            if(System.IO.Directory.Exists("@lang.txt")) {
+            if(System.IO.File.Exists(@"lang.txt")) {
                 lines = System.IO.File.ReadAllLines(@"lang.txt");
             }
             else {
