@@ -9,7 +9,11 @@ public class cd_Command {
 
         //Checking if the directory the user wants to switch to exists.
         else if(System.IO.Directory.Exists(inputFinal[1])) {
-
+            //Checking if the last character of the input path is a '\', in which case it will be removed.
+            if(inputFinal[1].Substring(inputFinal[1].Length - 1) == "\\") {
+                inputFinal[1] = inputFinal[1].Substring(0, inputFinal[1].Length - 1);
+            }
+            
             //Checking if the argument length is two, in which case it will append a '\'.
             if(inputFinal[1].Length == 2) {
                 inputFinal[1] += "\\";
