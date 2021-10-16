@@ -3,7 +3,7 @@
 public class cd_Command {
     public static void cd(string[] inputFinal) {
         //Checking if the command is only "cd" to just display the path.
-        if(inputFinal.Length == 1 || inputFinal[1] == " ") {
+        if(inputFinal.Length == 1 || Commands.Commands.OnlyContains(inputFinal[1], ' ')) {
             System.Console.WriteLine(Variables.Variables.path);
         }
 

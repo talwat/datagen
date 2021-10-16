@@ -1,13 +1,13 @@
 #LANGUAGE FILE
 
-filePathError: Datagen cannot find the path specified.|
-commandNotFound: is not recognized as a command.|
-error: An error occured.|
-downloadingFrom: Downloading Source Code From Github...|
-deleting: Unzipping...|
-moving: Moving...|
-deletingExcess: Deleting excess files...|
-done: Done!|
-downloadingFile: Downloading |
-downloadSucceeded: Downloaded File Successfully!|
-downloadFailed: Download Failed.|
+filePathError: Datagen cannot find the path specified.
+commandNotFound: is not recognized as a command.
+error: An error occured.
+downloadingFrom: Downloading Source Code From Github...
+deleting: Unzipping...
+moving: Moving...
+deletingExcess: Deleting excess files...
+done: Done!
+downloadingFile: Downloading 
+downloadSucceeded: Downloaded File Successfully!
+downloadFailed: Download Failed.

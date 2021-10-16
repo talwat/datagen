@@ -4,6 +4,19 @@ using System.Reflection; //For invoking a function based on strings.
 
 namespace Commands {
     class Commands {
+        public static bool OnlyContains(string input, char contains) {
+            if(input == "") {
+                return true;
+            }
+            else {
+                foreach(char character in input) {
+                    if(character != contains) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
         public static void GetInput() {
             //Writes the path and ">"
             Console.Write(Variables.Variables.path + ">");

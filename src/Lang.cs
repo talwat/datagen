@@ -34,11 +34,11 @@ namespace Lang {
             //Inserting the raw lines into the dictionary.
             foreach(string line in lines) {
                 //Checking if the line should be read. (If it isn't nothing and it doesn't start with '#')
-                if(line != "" && !line.StartsWith("#")) {
+                if(!Commands.Commands.OnlyContains(line, ' ') && !line.StartsWith("#") && !Commands.Commands.OnlyContains(line, ' ') ) {
                     //Getting the first and second part of the line, and adding it to the dictionary.
                     messages.Add(
                         line.Substring(0, line.IndexOf(":")), //Getting the first part.
-                        line.Substring(line.IndexOf(":") + 2, line.IndexOf("|") - 1 - line.IndexOf(":") - 1) //Getting the second part.
+                        line.Substring(line.IndexOf(":") + 2, (line.Length - 1) - line.IndexOf(":") - 1) //Getting the second part.
                     );
                 }
             }
