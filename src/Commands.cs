@@ -11,7 +11,8 @@ namespace Commands {
             //Gets the raw input and splits it to get the arguments and main command.
             rawInput = Console.ReadLine();
             string[] inputFinal = rawInput.Split(" ");
-
+            inputFinal[0] = inputFinal[0].ToLower();
+            
             try {
                 //Invokes a method from the input
                 if(InvokeFromString(inputFinal[0] + "_Command", inputFinal[0], new object[] {inputFinal}) == 5) {
