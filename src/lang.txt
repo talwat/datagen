@@ -3,11 +3,27 @@
 filePathError: Datagen cannot find the path specified.
 commandNotFound: is not recognized as a command.
 error: An error occured.
+
+#Downloading Source
 downloadingFrom: Downloading Source Code From Github...
 deleting: Unzipping...
 moving: Moving...
 deletingExcess: Deleting excess files...
 done: Done!
+
+#Downloading File
 downloadingFile: Downloading 
 downloadSucceeded: Downloaded File Successfully!
 downloadFailed: Download Failed.
+
+#Hatmaker Prompts
+hatNameAsk: What is the hats name? (In code)
+hatDisplayNameAsk: What is the hats display name?
+hatDisplayNameColorAsk: What is the hats display name color?
+hatHelmetItemAsk: What is the hat item? (Has to be a helmet)
+hatDisplayItemAsk: What is the display item?
+hatHelmetItemCmdAsk: What is the hat item's CustomModelData?
+hatDisplayItemCmdAsk: What is the display item's CustomModelData?
+hatNamespaceAsk: What is the Datapack Namespace?
+hatMakingFiles: Making Files...
+hatDone: Done!
