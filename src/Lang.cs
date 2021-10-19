@@ -26,7 +26,9 @@ namespace Lang {
             //If it fails, then it will ask to download it from the github repository.
             else {
                 //Deleting the language directory. (To avoid having multiple of the same file)
-                System.IO.Directory.Delete("lang", true);
+                if(System.IO.Directory.Exists("lang")) {
+                    System.IO.Directory.Delete("lang", true);
+                }
 
                 //Getting the answer.
                 System.Console.WriteLine("The language files can't be found.");
@@ -39,9 +41,9 @@ namespace Lang {
                     if(!System.IO.Directory.Exists("lang")) {
                         System.IO.Directory.CreateDirectory("lang");
                     }
-                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt", "lang.txt", true, false);
-                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt", "credits.txt", true, false);
-                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt", "help.txt", true, false);
+                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt", "lang/lang.txt", true, false);
+                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt", "lang/credits.txt", true, false);
+                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt", "lang/help.txt", true, false);
                     lines = System.IO.File.ReadAllLines(@"lang/lang.txt");
                     help = System.IO.File.ReadAllText("lang/help.txt");
                     credits = System.IO.File.ReadAllText("lang/credits.txt");
