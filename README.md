@@ -27,12 +27,12 @@ Right now it has:
 * Drop recipe maker
 
 ## Download
-#### Release
+### Release
 *(Recommended)*
 
 Unfortunately, there isn't a finished release yet. You will need to use the other method.
 
-#### Compiling from source
+### Compiling from source
 *(Not recommended)*
 
 This will probably not work half of the time, so proceed with caution.
