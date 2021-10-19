@@ -27,3 +27,6 @@ hatDisplayItemCmdAsk: What is the display item's CustomModelData?
 hatNamespaceAsk: What is the Datapack Namespace?
 hatMakingFiles: Making Files...
 hatDone: Done!
+
+#Language Prompts
+langFilesReloaded: The language files have been successfully reloaded!
