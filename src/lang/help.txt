@@ -6,3 +6,4 @@ SOURCE         Downloads the latest source code from the Github repository.
 RELOADLANG     Reloads the language file.
 
 HATMAKER       Generates the code for a minecraft hat.
+DROPRECIPE     Generates the code for a drop recipe.

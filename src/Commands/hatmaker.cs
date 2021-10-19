@@ -4,12 +4,12 @@ using System.IO;
 
 public class hatmaker_Command {
     public static void hatmaker(string[] finalInput) {
-        hatmaker_extra.GetInputs(finalInput);
-        hatmaker_extra.MakeFiles();
+        hatmaker_Extra.GetInputs(finalInput);
+        hatmaker_Extra.MakeFiles();
     }
 }
 
-public class hatmaker_extra {
+public class hatmaker_Extra {
     public static Dictionary<string, string> arguements = new Dictionary<string, string>();
     public static void GetInputs(string[] finalInput) {
         if(finalInput.Length < 9) {
@@ -65,7 +65,7 @@ public class hatmaker_extra {
                 "helm:1b} 1"
         );
         TextFile.TextFile.TextFileMake(
-            path + "logic.mcfunction",
+            path + "tick.mcfunction",
                 "execute as @a[nbt={Inventory:[{id:\"minecraft:"
                 + arguements["hatItem"] +
                 "\", tag:{"

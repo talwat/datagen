@@ -1,5 +1,6 @@
-#LANGUAGE FILE
+###LANGUAGE FILE
 
+#Base Messages
 filePathError: Datagen cannot find the path specified.
 commandNotFound: is not recognized as a command.
 error: An error occured.
@@ -27,6 +28,15 @@ hatDisplayItemCmdAsk: What is the display item's CustomModelData?
 hatNamespaceAsk: What is the Datapack Namespace?
 hatMakingFiles: Making Files...
 hatDone: Done!
+
+#Drop Recipe Maker
+dropRecipeDatapackNamespaceAsk: What is the datapack namespace?
+dropRecipeRecipeNameAsk: What is the recipe name?
+dropRecipeItemAsk: What item would you like to add to the recipe?
+dropRecipeDoneAsk: If you don't want to add anything else, type 'done'
+dropRecipeNbtAsk: What NBT should it have? (Just press enter for no nbt)
+dropRecipeMakingFiles: Making Files...
+dropRecipeDone: Done!
 
 #Language Prompts
 langFilesReloaded: The language files have been successfully reloaded!
