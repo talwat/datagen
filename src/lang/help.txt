@@ -3,5 +3,6 @@ HELP           Provides Help information for Datagen commands.
 CREDITS        Shows the people who made Datagen.
 QUIT           Quits the program.
 SOURCE         Downloads the latest source code from the Github repository.
+RELOADLANG     Reloads the language file.
 
 HATMAKER       Generates the code for a minecraft hat.
