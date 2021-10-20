@@ -12,6 +12,8 @@ public class droprecipe_Extra {
     public static List<string[]> arguements = new List<string[]>() {};
     public static string datapackNamespace;
     public static string recipeName;
+    public static string finalItem;
+    public static string finalItemNbt;
     public static void GetInputs() {
         bool keepAsking = true;
         string item;
@@ -33,6 +35,10 @@ public class droprecipe_Extra {
                 arguements.Add(new string[] {item, nbt});
             }
         }
+        Console.WriteLine(Lang.Lang.messages["dropRecipeFinalItemAsk"]);
+        finalItem = Console.ReadLine();
+        Console.WriteLine(Lang.Lang.messages["dropRecipeFinalItemNbtAsk"]);
+        finalItemNbt = Console.ReadLine();
     }
     public static void MakeFiles() {
         Console.WriteLine(Lang.Lang.messages["dropRecipeMakingFiles"]);
@@ -58,8 +64,14 @@ public class droprecipe_Extra {
                 text += " if entity @e[type=item, distance=..1, nbt={Item:{id:\"minecraft:" + arguement[0] + "\", tag:" + arguement[1] + "}}]";
             }
         }
-
-        string text1 = "kill @s\n";
+        string itemSummon = "";
+        if(finalItemNbt == "") {
+            itemSummon = "summon item ~ ~ ~ {Item:{id:\"minecraft:" + finalItem + "\", Count:1b}}\n";
+        }
+        else {
+            itemSummon = "summon item ~ ~ ~ {Item:{id:\"minecraft:" + finalItem + "\", tag:" + finalItemNbt + ", Count:1b}}\n";
+        }
+        string text1 = itemSummon + "kill @s\n";
         foreach(string[] arguement in arguements) {
             if(arguement[1] == "") {
                 text1 += "kill @e[type=item, distance=..1, nbt={Item:{id:\"minecraft:" + arguement[0] + "\"}}, limit=1] \n";

@@ -35,6 +35,8 @@ dropRecipeRecipeNameAsk: What is the recipe name?
 dropRecipeItemAsk: What item would you like to add to the recipe?
 dropRecipeDoneAsk: If you don't want to add anything else, type 'done'
 dropRecipeNbtAsk: What NBT should it have? (Just press enter for no nbt)
+dropRecipeFinalItemAsk: What should the result item be?
+dropRecipeFinalItemNbtAsk: What nbt should the result item have? (Just press enter for none)
 dropRecipeMakingFiles: Making Files...
 dropRecipeDone: Done!
 

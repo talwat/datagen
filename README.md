@@ -18,6 +18,8 @@ Usually, you need to put the generated folder in your datapacks `function` folde
 
 Then, in your `tick.json` file, you need to add `NAMESPACE:GENERATED_FOLDER/tick`. *(Replace the words in all caps)*
 
+If the program asks for nbt, and you want to add some, always put it in **curly brackets** (`{}`)
+
 The `help` command goes over all of the commands.
 
 You can look at the commands to see which one is useful for you.

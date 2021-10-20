@@ -5,7 +5,7 @@ namespace MainThread {
         static void Main(string[] args) {
             //Clearing the console and writing some text.
             Console.Clear();
-            Console.WriteLine("DataGen [Version 0.2 DEV]");
+            Console.WriteLine("DataGen [Version 0.3 DEV]");
             Console.WriteLine("Talwat. Open source on Github.\n");
 
             //Loading the language file.
