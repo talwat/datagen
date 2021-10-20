@@ -33,9 +33,15 @@ namespace Commands {
                     Console.WriteLine("\'{0}\' " + Lang.Lang.messages["commandNotFound"], inputFinal[0]);
                 }
             }
-            catch {
+            catch(Exception error) {
                 //Prints out an error message if an error occured.
                 Console.WriteLine(Lang.Lang.messages["error"]);
+                if(!System.IO.Directory.Exists("logs")) {
+                    System.IO.Directory.CreateDirectory("logs");   
+                }
+                string date = DateTime.Now.ToString("yyyy.M.dd");
+                string time = DateTime.Now.ToString("hh.mm tt");
+                TextFile.TextFile.TextFileMake("logs/error " + date + " " + time + ".txt", date + " " + time + "\nHappened while executing command: " + inputFinal[0] + "\n\n" + Convert.ToString(error.GetBaseException()));
             }
             Console.WriteLine();
             //Repeats function to get another command.
