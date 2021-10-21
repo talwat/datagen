@@ -1,4 +1,5 @@
 using System; //For printing to the console and using GetType().
+using static Logging.Logging;
 using static Variables.Variables; //For accessing some of the global variables.
 using System.Reflection; //For invoking a function based on strings.
 
@@ -30,16 +31,16 @@ namespace Commands {
                 //Invokes a method from the input
                 if(InvokeFromString(inputFinal[0] + "_Command", inputFinal[0], new object[] {inputFinal}) == 5) {
                     //Prints that the command is not found if the method returns "5".
-                    Console.WriteLine("\'{0}\' " + Lang.Lang.messages["commandNotFound"], inputFinal[0]);
+                    Log("\'" + inputFinal[0] + "\' " + Lang.Lang.messages["commandNotFound"], "error");
                 }
             }
             catch(Exception error) {
                 //Prints out an error message if an error occured.
                 if(error.InnerException is System.Collections.Generic.KeyNotFoundException) {
-                    Console.WriteLine("A language error occured.\nRun 'downloadlang' to download the latest language files.");
+                    Log("A language error occured.\nRun 'downloadlang' to download the latest language files.", "error");
                 }
                 else {
-                    Console.WriteLine(Lang.Lang.messages["error"]);
+                    Log(Lang.Lang.messages["error"], "fatal");
                     if(!System.IO.Directory.Exists("logs")) {
                         System.IO.Directory.CreateDirectory("logs");   
                     }

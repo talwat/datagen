@@ -3,7 +3,7 @@ using static Lang.Lang;
 
 public class downloadlang_Command {
     public static void downloadlang(string[] finalInput) {
-        System.Console.WriteLine("Are you sure you want to download the latest language files?");
+        Logging.Logging.Log("Are you sure you want to download the latest language files?", "input");
         string answer = System.Console.ReadLine().ToLower();
         if(
             answer == "yes" 
@@ -26,7 +26,7 @@ public class downloadlang_Command {
             help = System.IO.File.ReadAllText("lang/help.txt");
             credits = System.IO.File.ReadAllText("lang/credits.txt");
             Lang.Lang.LoadLang();
-            System.Console.WriteLine(messages["langFilesDownloaded"]);
+            Logging.Logging.Log(messages["langFilesDownloaded"], "success");
         }
         else {
             return;

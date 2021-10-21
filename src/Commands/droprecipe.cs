@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using static Logging.Logging;
 
 public class droprecipe_Command {
     public static void droprecipe(string[] inputfinal) {
@@ -18,30 +19,30 @@ public class droprecipe_Extra {
         bool keepAsking = true;
         string item;
         string nbt;
-        Console.WriteLine(Lang.Lang.messages["dropRecipeDatapackNamespaceAsk"]);
+        Log(Lang.Lang.messages["dropRecipeDatapackNamespaceAsk"], "input");
         datapackNamespace = Console.ReadLine();
-        Console.WriteLine(Lang.Lang.messages["dropRecipeRecipeNameAsk"]);
+        Log(Lang.Lang.messages["dropRecipeRecipeNameAsk"], "input");
         recipeName = Console.ReadLine();
         while(keepAsking) {
-            Console.WriteLine(Lang.Lang.messages["dropRecipeItemAsk"] + "\n" + Lang.Lang.messages["dropRecipeDoneAsk"]);
+            Log(Lang.Lang.messages["dropRecipeItemAsk"] + "\n" + Lang.Lang.messages["dropRecipeDoneAsk"], "input");
             string answer = Console.ReadLine();
             if(answer == "done") {
                 keepAsking = false;
             }
             else {
                 item = answer;
-                Console.WriteLine(Lang.Lang.messages["dropRecipeNbtAsk"]);
+                Log(Lang.Lang.messages["dropRecipeNbtAsk"], "input");
                 nbt = Console.ReadLine();
                 arguements.Add(new string[] {item, nbt});
             }
         }
-        Console.WriteLine(Lang.Lang.messages["dropRecipeFinalItemAsk"]);
+        Log(Lang.Lang.messages["dropRecipeFinalItemAsk"], "input");
         finalItem = Console.ReadLine();
-        Console.WriteLine(Lang.Lang.messages["dropRecipeFinalItemNbtAsk"]);
+        Log(Lang.Lang.messages["dropRecipeFinalItemNbtAsk"], "input");
         finalItemNbt = Console.ReadLine();
     }
     public static void MakeFiles() {
-        Console.WriteLine(Lang.Lang.messages["dropRecipeMakingFiles"]);
+        Log(Lang.Lang.messages["dropRecipeMakingFiles"]);
 
         string path = Variables.Variables.path + "\\" + recipeName + "\\";
         if(Directory.Exists(Variables.Variables.path + "\\" + recipeName)) {
@@ -90,6 +91,6 @@ public class droprecipe_Extra {
                 text + " run function " + datapackNamespace + ":" + recipeName + "/crafted"
         );
 
-        Console.WriteLine(Lang.Lang.messages["dropRecipeDone"]);
+        Log(Lang.Lang.messages["dropRecipeDone"], "success");
     }
 }

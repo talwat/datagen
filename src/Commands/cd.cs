@@ -25,7 +25,7 @@ public class cd_Command {
 
         //If the file path doesn't exist, then it will write that the program can't find it.
         else {
-            System.Console.WriteLine(Lang.Lang.messages["filePathError"]);
+            Logging.Logging.Log(Lang.Lang.messages["filePathError"], "error");
         }
     }
 }

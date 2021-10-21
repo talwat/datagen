@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using System.IO;
+using static Logging.Logging;
 
 public class hatmaker_Command {
     public static void hatmaker(string[] finalInput) {
@@ -14,21 +15,21 @@ public class hatmaker_Extra {
     public static void GetInputs(string[] finalInput) {
         if(finalInput.Length < 9) {
             arguements = new Dictionary<string, string>();
-            Console.WriteLine(Lang.Lang.messages["hatNameAsk"]);
+            Log(Lang.Lang.messages["hatNameAsk"], "input");
             arguements.Add("name", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatDisplayNameAsk"]);
+            Log(Lang.Lang.messages["hatDisplayNameAsk"], "input");
             arguements.Add("displayName", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatDisplayNameColorAsk"]);
+            Log(Lang.Lang.messages["hatDisplayNameColorAsk"], "input");
             arguements.Add("displayNameColor", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatHelmetItemAsk"]);
+            Log(Lang.Lang.messages["hatHelmetItemAsk"], "input");
             arguements.Add("hatItem", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatDisplayItemAsk"]);
+            Log(Lang.Lang.messages["hatDisplayItemAsk"], "input");
             arguements.Add("displayItem", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatHelmetItemCmdAsk"]);
+            Log(Lang.Lang.messages["hatHelmetItemCmdAsk"], "input");
             arguements.Add("hatCmd", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatDisplayItemCmdAsk"]);
+            Log(Lang.Lang.messages["hatDisplayItemCmdAsk"], "input");
             arguements.Add("displayCmd", Console.ReadLine());
-            Console.WriteLine(Lang.Lang.messages["hatNamespaceAsk"]);
+            Log(Lang.Lang.messages["hatNamespaceAsk"], "input");
             arguements.Add("namespace", Console.ReadLine());
         }
         else if(finalInput.Length >= 9) {
@@ -44,7 +45,7 @@ public class hatmaker_Extra {
     }
 
     public static void MakeFiles() {
-        Console.WriteLine(Lang.Lang.messages["hatMakingFiles"]);
+        Log(Lang.Lang.messages["hatMakingFiles"]);
         string path = Variables.Variables.path + "\\" + arguements["name"] + "\\";
         if(Directory.Exists(Variables.Variables.path + "\\" + arguements["name"])) {
             Directory.Delete(Variables.Variables.path + "\\" + arguements["name"], true);
@@ -141,6 +142,6 @@ public class hatmaker_Extra {
                 "execute as @s if entity @s[nbt={Inventory:[{id:\"minecraft:" + arguements["displayItem"] + "\", tag:{" + arguements["name"] +":1b}, Slot:35b}]}] run item replace entity @s inventory.26 with " + arguements["hatItem"] + "{display:{Name:'{\"text\":\"" + arguements["displayName"] + "\",\"color\":\"" + arguements["displayNameColor"] + "\",\"italic\":false}'},HideFlags:2,CustomModelData:" + arguements["hatCmd"] + "," + arguements["name"] + "helm:1b} 1" + "\n" +
                 "execute as @s if entity @s[nbt={Inventory:[{id:\"minecraft:" + arguements["displayItem"] + "\", tag:{" + arguements["name"] +":1b}, Slot:-106b}]}] run item replace entity @s weapon.offhand with " + arguements["hatItem"] + "{display:{Name:'{\"text\":\"" + arguements["displayName"] + "\",\"color\":\"" + arguements["displayNameColor"] + "\",\"italic\":false}'},HideFlags:2,CustomModelData:" + arguements["hatCmd"] + "," + arguements["name"] + "helm:1b} 1"
         );
-        Console.WriteLine(Lang.Lang.messages["hatDone"]);
+        Log(Lang.Lang.messages["hatDone"], "success");
     }
 }

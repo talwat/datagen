@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using static Logging.Logging;
 namespace Lang {
     class Lang {
         //Dictionary to store strings from lang.txt
@@ -31,8 +31,8 @@ namespace Lang {
                 }
 
                 //Getting the answer.
-                System.Console.WriteLine("The language files can't be found.");
-                System.Console.WriteLine("Would you like to download the latest language files from the github repository? (y/n)");
+                Log("The language files can't be found.", "error");
+                Log("Would you like to download the latest language files from the github repository? (y/n)", "input");
                 string answer = System.Console.ReadLine();
                 
                 //Checking the answer.
@@ -44,9 +44,8 @@ namespace Lang {
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt", "lang/lang.txt", true, false);
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt", "lang/credits.txt", true, false);
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt", "lang/help.txt", true, false);
-                    lines = System.IO.File.ReadAllLines(@"lang/lang.txt");
-                    help = System.IO.File.ReadAllText("lang/help.txt");
-                    credits = System.IO.File.ReadAllText("lang/credits.txt");
+                    LoadLang();
+                    Log(Lang.messages["langFilesDownloaded"], "success");
                 }
                 else {
                     //Closing the program.
@@ -57,7 +56,7 @@ namespace Lang {
             //Inserting the raw lines into the dictionary.
             foreach(string line in lines) {
                 //Checking if the line should be read. (If it isn't nothing and it doesn't start with '#')
-                if(!Commands.Commands.OnlyContains(line, ' ') && !line.StartsWith("#") && !Commands.Commands.OnlyContains(line, ' ') ) {
+                if(!Commands.Commands.OnlyContains(line, ' ') && !line.StartsWith("#")) {
                     //Getting the first and second part of the line, and adding it to the dictionary.
                     messages.Add(
                         line.Substring(0, line.IndexOf(":")), //Getting the first part.
