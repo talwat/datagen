@@ -42,3 +42,4 @@ dropRecipeDone: Done!
 
 #Language Prompts
 langFilesReloaded: The language files have been successfully reloaded!
+langFilesDownloaded: The language files have been successfully downloaded!
