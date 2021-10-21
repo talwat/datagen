@@ -16,7 +16,7 @@ Datagen is meant to be used with [minecraft](https://minecraft.net) java.
 
 Usually, you need to put the generated folder in your datapacks `function` folder.
 
-Then, in your `tick.json` file, you need to add `NAMESPACE:GENERATED_FOLDER/tick`. *(Replace the words in all caps)*
+Then, in your `tick.json` file, you need to add `"NAMESPACE:GENERATED_FOLDER/tick"`. *(Replace the words in all caps)*
 
 If the program asks for nbt, and you want to add some, always put it in **curly brackets** (`{}`)
 
@@ -53,6 +53,10 @@ dotnet publish
 
 Then, go to the place you cloned it in with the file explorer, and from there go to `\bin\Debug\net5.0\publish`.
 Finally, you will see a few files. Click on the .exe file, and you have successfully launched datagen.
+
+## Libraries
+The libraries used in datagen are:
+* [Pastel](https://github.com/silkfire/Pastel)
 
 ## Contributers
 The **contributers** who have made this project are:
