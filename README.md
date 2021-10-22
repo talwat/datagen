@@ -6,12 +6,20 @@ DataGen
 
 It's just made for fun, and for personal use. *(AKA the code wont be the best thing in the world)*
 
-The prompt is based on the **Microsoft command prompt**.
+The core version of the prompt is based on the **Microsoft command prompt**.
 
 I might make a **bash** version in the future, for you linux fans out there.
 
 
 ## Use
+There are two ways to use datagen commands.
+
+1. You can launch the .exe file from the explorer to access a very limited version of the windows cmd with only the datagen commands.
+
+2. You can use `datagen <command>` in the normal command prompt for easy access. **ONLY WORKS ON WINDOWS FOR NOW**
+
+*(You have to use **1** after the program has been downloaded/moved for **2** to work.)*
+
 Datagen is meant to be used with [minecraft](https://minecraft.net) java.
 
 Usually, you need to put the generated folder in your datapacks `function` folder.
