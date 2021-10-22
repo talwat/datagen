@@ -4,7 +4,7 @@ using static Variables.Variables; //For accessing some of the global variables.
 using System.Reflection; //For invoking a function based on strings.
 
 namespace Commands {
-    class Commands {
+    public class Commands {
         public static bool OnlyContains(string input, char contains) {
             if(input == "") {
                 return true;
