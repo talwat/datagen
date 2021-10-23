@@ -1,10 +1,11 @@
 using System; //For printing to the console and using GetType().
-using static Logging.Logging;
+using static Logging.Logging; //For logging to the console.
 using static Variables.Variables; //For accessing some of the global variables.
 using System.Reflection; //For invoking a function based on strings.
 
 namespace Commands {
     public class Commands {
+        //Checks if a string only contains a particular character.
         public static bool OnlyContains(string input, char contains) {
             if(input == "") {
                 return true;
@@ -41,6 +42,8 @@ namespace Commands {
                 }
                 else {
                     Log(Lang.Lang.messages["error"], "fatal");
+
+                    //Creating a log with the name as the date of the error.
                     if(!System.IO.Directory.Exists("logs")) {
                         System.IO.Directory.CreateDirectory("logs");   
                     }

@@ -4,6 +4,7 @@ namespace Lang {
     class Lang {
         //Dictionary to store strings from lang.txt
         public static Dictionary<string, string> messages = new Dictionary<string, string>();
+        //Credits and help vars.
         public static string credits = "";
         public static string help = "";
         //Variable to store the raw lines from lang.txt
@@ -12,7 +13,7 @@ namespace Lang {
             //Resseting messages hashmap.
             messages = new Dictionary<string, string>();
 
-            //Trying to read from the language files.
+            //Checking if the language files exist to read from them.
             if(
                    System.IO.File.Exists(@"lang/lang.txt")
                 && System.IO.File.Exists(@"lang/help.txt")
@@ -23,7 +24,7 @@ namespace Lang {
                 credits = System.IO.File.ReadAllText("lang/credits.txt");
             }
 
-            //If it fails, then it will ask to download it from the github repository.
+            //If they dont, then it will ask to download it from the github repository.
             else {
                 //Deleting the language directory. (To avoid having multiple of the same file)
                 if(System.IO.Directory.Exists("lang")) {
@@ -32,11 +33,11 @@ namespace Lang {
 
                 //Getting the answer.
                 Log("The language files can't be found.", "error");
-                Log("Would you like to download the latest language files from the github repository? (y/n)", "input");
+                Log("Would you like to download the latest language files from the github repository? (y/n)", "y/n");
                 string answer = System.Console.ReadLine();
                 
                 //Checking the answer.
-                if(answer == "y") {
+                if(Input.Input.AnswerToBool(answer)) {
                     //Downloading the language files and then reading from them.
                     if(!System.IO.Directory.Exists("lang")) {
                         System.IO.Directory.CreateDirectory("lang");

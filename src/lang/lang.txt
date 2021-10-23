@@ -4,6 +4,12 @@
 filePathError: Datagen cannot find the path specified.
 commandNotFound: is not recognized as a command.
 error: An error occured.
+noCmdInput: No command inputted.
+addPathAsk: Datagen wants to add a value to PATH in order to make datagen usable in the normal command prompt aswell.
+addPathAskWarn: This is not reccommended for computers that are not yours.
+addPathAskInput: Do you want to add the value to PATH?
+addedPath: Added value to PATH!
+notAddingPath: Not adding value to PATH.
 
 #Downloading Source
 sourceWarning: Compiling from source is not recommend.
@@ -42,5 +48,7 @@ dropRecipeMakingFiles: Making Files...
 dropRecipeDone: Done!
 
 #Language Prompts
+langFilesDownloadAsk: Are you sure you want to download the latest language files?
+langFilesReloadAsk: Are you sure you want to reload the language files?
 langFilesReloaded: The language files have been successfully reloaded!
 langFilesDownloaded: The language files have been successfully downloaded!

@@ -1,21 +1,19 @@
 ﻿using System; //For writing to the console.
-using static Commands.Commands;
-using System.Diagnostics;
-using System.Management;
-using Pastel;
+//using System.Diagnostics;
+using Pastel; //For coloring messages
 
 namespace MainThread {
     class MainThread {
-        static void Main(string[] args) {     
-            Proccessing.AddPATH();
-
+        static void Main(string[] args) {    
             //Loading the language file.
             Lang.Lang.LoadLang();
 
             if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer")) {
+                Proccessing.AddPATH();
+                
                 //Clearing the console and writing some text.
                 Console.Clear();
-                Console.WriteLine("DataGen [Version 0.5 DEV]");
+                Console.WriteLine("DataGen " + "CORE".Pastel(System.Drawing.Color.Crimson) + " [Version 0.5 DEV]");
                 Console.WriteLine("Talwat. Open source on Github.\n");
 
                 //Starting the loop to get commands.
@@ -25,19 +23,19 @@ namespace MainThread {
                 if((args[0] == "debug")) {
                     //Clearing the console and writing some text.
                     Console.Clear();
-                    Console.WriteLine("DataGen " + "DEBUG".Pastel(System.Drawing.Color.CadetBlue) + " [Version 0.4 DEV]");
+                    Console.WriteLine("DataGen " + "DEBUG".Pastel(System.Drawing.Color.CadetBlue) + " [Version 0.5 DEV]");
                     Console.WriteLine("Talwat. Open source on Github.\n");
 
                     //Starting the loop to get commands.
                     Commands.Commands.GetInput();
                 }
-                if(InvokeFromString(args[0] + "_Command", args[0], new object[] {args}) == 5) {
+                if(Commands.Commands.InvokeFromString(args[0] + "_Command", args[0], new object[] {args}) == 5) {
                     //Prints that the command is not found if the method returns "5".
                     Logging.Logging.Log("\'" + args[0] + "\' " + Lang.Lang.messages["commandNotFound"], "error");
                 }
             }
             else if (args.Length == 0) {
-                Logging.Logging.Log("No command inputted.", "fatal");
+                Logging.Logging.Log(Lang.Lang.messages["noCmdInput"], "fatal");
             }
         }
     }
@@ -48,8 +46,8 @@ namespace MainThread {
             var oldValue = Environment.GetEnvironmentVariable(name, scope);
             var newValue  = oldValue + @";" + Variables.Variables.path + @"\";
             if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) && !Environment.GetEnvironmentVariable(name, scope).Contains(Variables.Variables.path)) {
-                Logging.Logging.Log("Datagen wants to add a value to PATH in order to make datagen usable in the normal command prompt aswell.\nThis is not reccommended for computers that are not yours.", "info");
-                Logging.Logging.Log("Do you want to add the value to PATH?", "input");
+                Logging.Logging.Log(Lang.Lang.messages["addPathAsk"] + "\n" + Lang.Lang.messages["addPathAskWarn"], "info");
+                Logging.Logging.Log(Lang.Lang.messages["addPathAskInput"], "input");
                 string answer = Console.ReadLine();
                 if(
                     answer == "yes" 
@@ -60,23 +58,23 @@ namespace MainThread {
                     || answer == "absolutely"
                 ) {
                     Environment.SetEnvironmentVariable(name, newValue, scope);
-                    Logging.Logging.Log("Added value to PATH!", "success");
+                    Logging.Logging.Log(Lang.Lang.messages["addedPath"], "success");
                 }
                 else {
-                    Logging.Logging.Log("Not adding value to PATH.");
+                    Logging.Logging.Log(Lang.Lang.messages["notAddingPath"]);
                 }
             }
         }
         public static string GetParentProcessName() {
             if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows)) {
-                var myId = Process.GetCurrentProcess().Id;
+                var myId = System.Diagnostics.Process.GetCurrentProcess().Id;
                 var query = string.Format("SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = {0}", myId);
-                var search = new ManagementObjectSearcher("root\\CIMV2", query);
+                var search = new System.Management.ManagementObjectSearcher("root\\CIMV2", query);
                 var results = search.Get().GetEnumerator();
                 results.MoveNext();
                 var queryObj = results.Current;
                 var parentId = (uint)queryObj["ParentProcessId"];
-                var parent = Process.GetProcessById((int)parentId);
+                var parent = System.Diagnostics.Process.GetProcessById((int)parentId);
                 return parent.ProcessName;
             }
             else {
