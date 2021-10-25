@@ -27,12 +27,32 @@ namespace Commands {
             rawInput = Console.ReadLine();
             string[] inputFinal = rawInput.Split(" ");
             inputFinal[0] = inputFinal[0].ToLower();
-            
+
+            //Invokes a method from the input
+            if(InvokeFromString(inputFinal[0] + "_Command", inputFinal[0], new object[] {inputFinal}, inputFinal) == 5) {
+                //Prints that the command is not found if the method returns "5".
+                Log("\'" + inputFinal[0] + "\' " + Lang.Lang.messages["commandNotFound"], "error");
+            }
+            Console.WriteLine();
+            //Repeats function to get another command.
+            GetInput();
+        }
+        public static int InvokeFromString(string classInput, string methodInput, object[] args, string[] inputFinal) {
             try {
-                //Invokes a method from the input
-                if(InvokeFromString(inputFinal[0] + "_Command", inputFinal[0], new object[] {inputFinal}) == 5) {
-                    //Prints that the command is not found if the method returns "5".
-                    Log("\'" + inputFinal[0] + "\' " + Lang.Lang.messages["commandNotFound"], "error");
+                //Checks if the class doesn't exist, if it doesn't, then return 5.
+                if(Type.GetType(classInput) == null) {
+                    return 5;
+                }
+                else {
+                    //Gets the class based on the string input.
+                    Type t = Type.GetType(classInput);
+
+                    //Gets the function based on the other string input.
+                    MethodInfo method = t.GetMethod(methodInput, BindingFlags.Static | BindingFlags.Public);
+
+                    //Invokes the method, and returns 0.
+                    method.Invoke(null, args);
+                    return 0;
                 }
             }
             catch(Exception error) {
@@ -51,26 +71,7 @@ namespace Commands {
                     string time = DateTime.Now.ToString("hh.mm tt");
                     TextFile.TextFile.TextFileMake("logs/error " + date + " " + time + ".txt", date + " " + time + "\nHappened while executing command: " + inputFinal[0] + "\n\n" + Convert.ToString(error.GetBaseException()));
                 }
-            }
-            Console.WriteLine();
-            //Repeats function to get another command.
-            GetInput();
-        }
-        public static int InvokeFromString(string classInput, string methodInput, object[] args) {
-            //Checks if the class doesn't exist, if it doesn't, then return 5.
-            if(Type.GetType(classInput) == null) {
-                return 5;
-            }
-            else {
-                //Gets the class based on the string input.
-                Type t = Type.GetType(classInput);
-
-                //Gets the function based on the other string input.
-                MethodInfo method = t.GetMethod(methodInput, BindingFlags.Static | BindingFlags.Public);
-
-                //Invokes the method, and returns 0.
-                method.Invoke(null, args);
-                return 0;
+                return 1;
             }
         }
     }

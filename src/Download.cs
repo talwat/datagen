@@ -1,5 +1,4 @@
-using System; //For printing to the console
-using static Logging.Logging;
+using static Logging.Logging; //For logging to the console
 using System.Net; //For Downloading Files
 
 namespace Download {
@@ -25,7 +24,7 @@ namespace Download {
                 }
             }
             else {
-                if(log == true) { Console.WriteLine("Downloading " + url); }
+                if(log == true) { Log("Downloading " + url); }
                 try {
                     //Downloading file from the internet.
                     webClient.DownloadFile(url, destinationPath + "...");

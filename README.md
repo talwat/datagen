@@ -14,7 +14,7 @@ I might make a **bash** version in the future, for you linux fans out there.
 ## Use
 There are two ways to use datagen commands.
 
-1. You can launch the .exe file from the explorer to access a very limited version of the windows cmd with only the datagen commands.
+1. You can launch the .exe file from the explorer to access a very limited version of the Windows CLI with only the datagen commands.
 
 2. You can use `datagen <command>` in the normal command prompt for easy access. **ONLY WORKS ON WINDOWS FOR NOW**
 

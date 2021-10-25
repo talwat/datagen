@@ -1,5 +1,4 @@
 ﻿using System; //For writing to the console.
-//using System.Diagnostics;
 using Pastel; //For coloring messages
 
 namespace MainThread {
@@ -29,7 +28,7 @@ namespace MainThread {
                     //Starting the loop to get commands.
                     Commands.Commands.GetInput();
                 }
-                if(Commands.Commands.InvokeFromString(args[0] + "_Command", args[0], new object[] {args}) == 5) {
+                if(Commands.Commands.InvokeFromString(args[0] + "_Command", args[0], new object[] {args}, args) == 5) {
                     //Prints that the command is not found if the method returns "5".
                     Logging.Logging.Log("\'" + args[0] + "\' " + Lang.Lang.messages["commandNotFound"], "error");
                 }
@@ -46,8 +45,9 @@ namespace MainThread {
             var oldValue = Environment.GetEnvironmentVariable(name, scope);
             var newValue  = oldValue + @";" + Variables.Variables.path + @"\";
             if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) && !Environment.GetEnvironmentVariable(name, scope).Contains(Variables.Variables.path)) {
-                Logging.Logging.Log(Lang.Lang.messages["addPathAsk"] + "\n" + Lang.Lang.messages["addPathAskWarn"], "info");
-                Logging.Logging.Log(Lang.Lang.messages["addPathAskInput"], "input");
+                Logging.Logging.Log(Lang.Lang.messages["addPathAsk"]); 
+                Logging.Logging.Log(Lang.Lang.messages["addPathAskWarn"], "warn");
+                Logging.Logging.Log(Lang.Lang.messages["addPathAskInput"], "y/n");
                 string answer = Console.ReadLine();
                 if(
                     answer == "yes" 

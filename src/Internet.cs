@@ -1,5 +1,4 @@
-using System.Net;
-using System.Net.Http;
+using System.Net.Http; //For viewing files from the internet.
 
 namespace Internet {
     class Internet {

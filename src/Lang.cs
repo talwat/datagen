@@ -9,7 +9,7 @@ namespace Lang {
         public static string help = "";
         //Variable to store the raw lines from lang.txt
         public static string[] lines;
-        public static void LoadLang() {
+        public static void LoadLang(bool readFromFile = true) {
             //Resseting messages hashmap.
             messages = new Dictionary<string, string>();
 
@@ -18,10 +18,16 @@ namespace Lang {
                    System.IO.File.Exists(@"lang/lang.txt")
                 && System.IO.File.Exists(@"lang/help.txt")
                 && System.IO.File.Exists(@"lang/credits.txt")
+                && readFromFile == true
             ) {
                 lines = System.IO.File.ReadAllLines(@"lang/lang.txt");
                 help = System.IO.File.ReadAllText("lang/help.txt");
                 credits = System.IO.File.ReadAllText("lang/credits.txt");
+            }
+            else if(readFromFile == false) {
+                lines = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt").Split("\n");
+                help = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt");
+                credits = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt");
             }
 
             //If they dont, then it will ask to download it from the github repository.
@@ -33,20 +39,29 @@ namespace Lang {
 
                 //Getting the answer.
                 Log("The language files can't be found.", "error");
-                Log("Would you like to download the latest language files from the github repository? (y/n)", "y/n");
+                Log("Would you like to download the latest language files, or would you like to read them from the internet? (d/i)", "input");
                 string answer = System.Console.ReadLine();
                 
                 //Checking the answer.
-                if(Input.Input.AnswerToBool(answer)) {
+                if(answer == "d" || answer == "download") {
                     //Downloading the language files and then reading from them.
+
+                    //Checking if the directory lang doesn't exist, and if it doesn't then it will make it.
                     if(!System.IO.Directory.Exists("lang")) {
                         System.IO.Directory.CreateDirectory("lang");
                     }
+
+                    //Downloading files..
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt", "lang/lang.txt", true, false);
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt", "lang/credits.txt", true, false);
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt", "lang/help.txt", true, false);
+                    
+                    //Loading files...
                     LoadLang();
                     Log(Lang.messages["langFilesDownloaded"], "success");
+                }
+                else if(answer == "i" || answer == "internet") {
+                    LoadLang(false);
                 }
                 else {
                     //Closing the program.
