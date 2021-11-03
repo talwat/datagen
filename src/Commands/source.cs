@@ -1,8 +1,7 @@
 //Command to download the source code.
 
 using System.IO; //For making directories and files.
-using System; //For writing to the console.
-using static Logging.Logging;
+using static Logging.Logging; //For logging to the console.
 
 public class source_Command {
     public static void source(string[] inputFinal) {
