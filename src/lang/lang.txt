@@ -4,7 +4,6 @@
 filePathError: Datagen cannot find the path specified.
 commandNotFound: is not recognized as a command.
 error: An error occured.
-noCmdInput: No command inputted.
 addPathAsk: Datagen wants to add a value to PATH in order to make datagen usable in the normal command prompt aswell.
 addPathAskWarn: This is not reccommended for computers that are not yours.
 addPathAskInput: Do you want to add the value to PATH?

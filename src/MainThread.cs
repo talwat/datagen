@@ -7,34 +7,31 @@ namespace MainThread {
             //Loading the language file.
             Lang.Lang.LoadLang();
 
-            if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer")) {
+            if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer") || (args.Length > 0 && args[0] == "debug")) {
+                Variables.Variables.core = true;
+            }
+            else {
+                Variables.Variables.core = false;
+            }
+            if(Variables.Variables.core) {
                 Proccessing.AddPATH();
                 
                 //Clearing the console and writing some text.
                 Console.Clear();
-                Console.WriteLine("DataGen " + "CORE".Pastel(System.Drawing.Color.Crimson) + " [Version 0.5 DEV]");
+                Console.WriteLine("DataGen " + "CORE".Pastel(System.Drawing.Color.Crimson) + " [Version " + Variables.Variables.version + "]");
                 Console.WriteLine("Talwat. Open source on Github.\n");
 
                 //Starting the loop to get commands.
                 Commands.Commands.GetInput();
             }
             else if(args.Length > 0) {
-                if((args[0] == "debug")) {
-                    //Clearing the console and writing some text.
-                    Console.Clear();
-                    Console.WriteLine("DataGen " + "DEBUG".Pastel(System.Drawing.Color.CadetBlue) + " [Version 0.5 DEV]");
-                    Console.WriteLine("Talwat. Open source on Github.\n");
-
-                    //Starting the loop to get commands.
-                    Commands.Commands.GetInput();
-                }
                 if(Commands.Commands.InvokeFromString(args[0] + "_Command", args[0], new object[] {args}, args) == 5) {
                     //Prints that the command is not found if the method returns "5".
                     Logging.Logging.Log("\'" + args[0] + "\' " + Lang.Lang.messages["commandNotFound"], "error");
                 }
             }
-            else if (args.Length == 0) {
-                Logging.Logging.Log(Lang.Lang.messages["noCmdInput"], "fatal");
+            else if (!Variables.Variables.core && args.Length == 0) {
+                help_Command.help(new string[] {});
             }
         }
     }
