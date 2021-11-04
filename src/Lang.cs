@@ -6,7 +6,7 @@ namespace Lang {
         public static Dictionary<string, string> messages = new Dictionary<string, string>();
         //Credits and help vars.
         public static string credits = "";
-        public static string help = "";
+        public static string[] help = new string[] {"", ""};
         //Variable to store the raw lines from lang.txt
         public static string[] lines;
         public static void LoadLang(bool readFromFile = true) {
@@ -21,12 +21,12 @@ namespace Lang {
                 && readFromFile == true
             ) {
                 lines = System.IO.File.ReadAllLines(@"lang/lang.txt");
-                help = System.IO.File.ReadAllText("lang/help.txt");
+                help = System.IO.File.ReadAllText("lang/help.txt").Split("\n\n\n");
                 credits = System.IO.File.ReadAllText("lang/credits.txt");
             }
             else if(readFromFile == false) {
                 lines = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt").Split("\n");
-                help = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt");
+                help = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt").Split("\n\n\n");
                 credits = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt");
             }
 

@@ -16,21 +16,21 @@ public class hatmaker_Extra {
         if(finalInput.Length < 9) {
             arguements = new Dictionary<string, string>();
             Log(Lang.Lang.messages["hatNameAsk"], "input");
-            arguements.Add("name", Console.ReadLine());
+            arguements.Add("name", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatDisplayNameAsk"], "input");
-            arguements.Add("displayName", Console.ReadLine());
+            arguements.Add("displayName", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatDisplayNameColorAsk"], "input");
-            arguements.Add("displayNameColor", Console.ReadLine());
+            arguements.Add("displayNameColor", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatHelmetItemAsk"], "input");
-            arguements.Add("hatItem", Console.ReadLine());
+            arguements.Add("hatItem", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatDisplayItemAsk"], "input");
-            arguements.Add("displayItem", Console.ReadLine());
+            arguements.Add("displayItem", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatHelmetItemCmdAsk"], "input");
-            arguements.Add("hatCmd", Console.ReadLine());
+            arguements.Add("hatCmd", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatDisplayItemCmdAsk"], "input");
-            arguements.Add("displayCmd", Console.ReadLine());
+            arguements.Add("displayCmd", Input.Input.GetArg());
             Log(Lang.Lang.messages["hatNamespaceAsk"], "input");
-            arguements.Add("namespace", Console.ReadLine());
+            arguements.Add("namespace", Input.Input.GetArg());
         }
         else if(finalInput.Length >= 9) {
             arguements.Add("name", finalInput[1]);

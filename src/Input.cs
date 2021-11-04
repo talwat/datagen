@@ -16,5 +16,21 @@ namespace Input {
                 return false;
             }
         }
+
+        public static string GetArg() {
+            bool stillAsk = true;
+            while(stillAsk) {
+                string answer;
+                answer = System.Console.ReadLine();
+                if(!Commands.Commands.OnlyContains(answer, ' ')) {
+                    stillAsk = false;
+                    return answer;
+                }
+                else {
+                    Logging.Logging.Log("Nothing Inputted\n", "error");
+                }
+            }
+            return "";
+        }
     }
 }

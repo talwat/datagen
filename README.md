@@ -6,7 +6,7 @@ DataGen
 
 It's just made for fun, and for personal use. *(AKA the code wont be the best thing in the world)*
 
-The core version of the prompt is based on the **Microsoft command prompt**.
+The **core** version of the prompt is based on the **Microsoft command prompt**.
 
 I might make a **bash** version in the future, for you linux fans out there.
 

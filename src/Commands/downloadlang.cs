@@ -21,7 +21,7 @@ public class downloadlang_Command {
 
             //Loading files into variables.
             lines = File.ReadAllLines("lang/lang.txt");
-            help = File.ReadAllText("lang/help.txt");
+            help = File.ReadAllText("lang/help.txt").Split("\n\n\n");
             credits = File.ReadAllText("lang/credits.txt");
 
             //Loading files.

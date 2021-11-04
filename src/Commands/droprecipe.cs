@@ -20,12 +20,12 @@ public class droprecipe_Extra {
         string item;
         string nbt;
         Log(Lang.Lang.messages["dropRecipeDatapackNamespaceAsk"], "input");
-        datapackNamespace = Console.ReadLine();
+        datapackNamespace = Input.Input.GetArg();
         Log(Lang.Lang.messages["dropRecipeRecipeNameAsk"], "input");
-        recipeName = Console.ReadLine();
+        recipeName = Input.Input.GetArg();
         while(keepAsking) {
             Log(Lang.Lang.messages["dropRecipeItemAsk"] + "\n" + Lang.Lang.messages["dropRecipeDoneAsk"], "input");
-            string answer = Console.ReadLine();
+            string answer = Input.Input.GetArg();
             if(answer == "done") {
                 keepAsking = false;
             }
@@ -37,7 +37,7 @@ public class droprecipe_Extra {
             }
         }
         Log(Lang.Lang.messages["dropRecipeFinalItemAsk"], "input");
-        finalItem = Console.ReadLine();
+        finalItem = Input.Input.GetArg();
         Log(Lang.Lang.messages["dropRecipeFinalItemNbtAsk"], "input");
         finalItemNbt = Console.ReadLine();
     }
@@ -51,14 +51,14 @@ public class droprecipe_Extra {
         Directory.CreateDirectory(Variables.Variables.path + "\\" + recipeName);
 
         string text = "execute as ";
-        if(arguements[0][1] == "") {
+        if(Commands.Commands.OnlyContains(arguements[0][1], ' ')) {
             text += "@e[type=item, nbt={Item:{id:\"minecraft:" + arguements[0][0] + "\"}}] at @s";
         }
         else {
             text += "@e[type=item, nbt={Item:{id:\"minecraft:" + arguements[0][0] + "\", tag:" + arguements[0][1] + "}}] at @s";
         }
         foreach(string[] arguement in arguements) {
-            if(arguement[1] == "") {
+            if(Commands.Commands.OnlyContains(arguement[1], ' ')) {
                 text += " if entity @e[type=item, distance=..1, nbt={Item:{id:\"minecraft:" + arguement[0] + "\"}}]";
             }
             else {
@@ -74,7 +74,7 @@ public class droprecipe_Extra {
         }
         string text1 = itemSummon + "kill @s\n";
         foreach(string[] arguement in arguements) {
-            if(arguement[1] == "") {
+            if(Commands.Commands.OnlyContains(arguement[1], ' ')) {
                 text1 += "kill @e[type=item, distance=..1, nbt={Item:{id:\"minecraft:" + arguement[0] + "\"}}, limit=1] \n";
             }
             else {

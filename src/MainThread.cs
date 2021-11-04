@@ -3,7 +3,7 @@ using Pastel; //For coloring messages
 
 namespace MainThread {
     class MainThread {
-        static void Main(string[] args) {    
+        static void Main(string[] args) {
             //Loading the language file.
             Lang.Lang.LoadLang();
 

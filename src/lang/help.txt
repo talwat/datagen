@@ -9,3 +9,15 @@ DOWNLOADLANG   Downloads the latest language files.
 
 HATMAKER       Generates the code for a minecraft hat.
 DROPRECIPE     Generates the code for a drop recipe.
+
+
+
+HELP           Provides Help information for Datagen commands.
+CREDITS        Shows the people who made Datagen.
+SOURCE         Downloads the latest source code from the Github repository.
+
+RELOADLANG     Reloads the language files.
+DOWNLOADLANG   Downloads the latest language files.
+
+HATMAKER       Generates the code for a minecraft hat.
+DROPRECIPE     Generates the code for a drop recipe.
