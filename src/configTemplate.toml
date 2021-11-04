@@ -1,0 +1,11 @@
+title = "Datagen"
+
+[lang]
+#Way the program reads from language files.
+#'internet' means it will automatically read from the internet.
+#'download' means it will automatically download the files.
+#'ask' means it will ask every time the program needs the language files.
+read = "ask"
+
+[errors]
+logErrors = true #Set to true if the error should be logged.

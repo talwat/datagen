@@ -4,15 +4,19 @@ using Pastel; //For coloring messages
 namespace MainThread {
     class MainThread {
         static void Main(string[] args) {
-            //Loading the language file.
+            //Loading the language files.
             Lang.Lang.LoadLang();
 
+            //Checking if the program is run by explorer or not to set the core variable.
             if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer") || (args.Length > 0 && args[0] == "debug")) {
                 Variables.Variables.core = true;
             }
             else {
                 Variables.Variables.core = false;
             }
+            //Loading the config file.
+            Config.Config.LoadConfig();
+
             if(Variables.Variables.core) {
                 Proccessing.AddPATH();
                 
@@ -40,20 +44,13 @@ namespace MainThread {
             var name = "PATH";
             var scope = EnvironmentVariableTarget.User; // or User
             var oldValue = Environment.GetEnvironmentVariable(name, scope);
-            var newValue  = oldValue + @";" + Variables.Variables.path + @"\";
-            if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) && !Environment.GetEnvironmentVariable(name, scope).Contains(Variables.Variables.path)) {
+            var newValue  = oldValue + @";" + Variables.Variables.corePath + @"\";
+            if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) && !Environment.GetEnvironmentVariable(name, scope).Contains(Variables.Variables.corePath)) {
                 Logging.Logging.Log(Lang.Lang.messages["addPathAsk"]); 
                 Logging.Logging.Log(Lang.Lang.messages["addPathAskWarn"], "warn");
                 Logging.Logging.Log(Lang.Lang.messages["addPathAskInput"], "y/n");
                 string answer = Console.ReadLine();
-                if(
-                    answer == "yes" 
-                    || answer == "y" 
-                    || answer == "yeah" 
-                    || answer == "yep" 
-                    || answer == "mhm" 
-                    || answer == "absolutely"
-                ) {
+                if(Input.Input.AnswerToBool(answer)) {
                     Environment.SetEnvironmentVariable(name, newValue, scope);
                     Logging.Logging.Log(Lang.Lang.messages["addedPath"], "success");
                 }
