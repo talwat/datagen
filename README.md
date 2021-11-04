@@ -65,6 +65,7 @@ Finally, you will see a few files. Click on the .exe file, and you have successf
 ## Libraries
 The libraries used in datagen are:
 * [Pastel](https://github.com/silkfire/Pastel)
+* [Tommy](https://github.com/dezhidki/Tommy)
 
 ## Contributers
 The **contributers** who have made this project are:
