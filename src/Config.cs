@@ -7,17 +7,17 @@ namespace Config {
         public static TomlTable configTable;
         public static void LoadConfig() {
             if(File.Exists("config.toml")) {
-                if(Variables.Variables.core) { Log("Loading config file..."); }
+                if(Variables.Variables.core) { Log(Lang.Lang.messages["loadingConfig"]); }
                 StreamReader reader = File.OpenText("config.toml");
                 configTable = TOML.Parse(reader);
-                if(Variables.Variables.core) { Log("Done loading config file!\n", "success"); }
+                if(Variables.Variables.core) { Log(Lang.Lang.messages["doneLoadingConfig"] + "\n", "success"); }
             }
             else {
                 if(Variables.Variables.core) { 
-                    Log("Config File not found", "error");
-                    Log("Downloading latest config file from the internet...");
+                    Log(Lang.Lang.messages["configNotFound"], "error");
+                    Log(Lang.Lang.messages["downloadingConfig"]);
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/configTemplate.toml", "config.toml", false, false);
-                    Log("Downloaded latest config file!\n", "success");
+                    Log(Lang.Lang.messages["doneDownloadingConfig"] + "\n", "success");
                 }
                 else {
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/configTemplate.toml", "config.toml", false, false);

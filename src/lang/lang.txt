@@ -52,3 +52,12 @@ langFilesDownloadAsk: Are you sure you want to download the latest language file
 langFilesReloadAsk: Are you sure you want to reload the language files?
 langFilesReloaded: The language files have been successfully reloaded!
 langFilesDownloaded: The language files have been successfully downloaded!
+langFilesReadInternet: The language files have been successfully read from the internet!
+langFilesReadFile: The language files have been successfully read!
+
+#Config Prompts
+loadingConfig: Loading config file...
+doneLoadingConfig: Done loading config file!
+configNotFound: Config File not found.
+downloadingConfig: Downloading latest config file from the internet...
+doneDownloadingConfig: Downloaded latest config file!
