@@ -10,19 +10,20 @@ namespace Config {
                 if(Variables.Variables.core) { Log("Loading config file..."); }
                 StreamReader reader = File.OpenText("config.toml");
                 configTable = TOML.Parse(reader);
-                if(Variables.Variables.core) { Log("Done loading config file!", "success"); }
+                if(Variables.Variables.core) { Log("Done loading config file!\n", "success"); }
             }
             else {
                 if(Variables.Variables.core) { 
                     Log("Config File not found", "error");
                     Log("Downloading latest config file from the internet...");
-                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/configTemplate.toml", "config.toml");
-                    Log("Downloaded latest config file!", "success");
+                    Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/configTemplate.toml", "config.toml", false, false);
+                    Log("Downloaded latest config file!\n", "success");
                 }
                 else {
                     Download.Download.DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/configTemplate.toml", "config.toml", false, false);
                 }
-                LoadConfig();
+                StreamReader reader = File.OpenText("config.toml");
+                configTable = TOML.Parse(reader);
             }
         }
     }

@@ -4,6 +4,8 @@ using Pastel; //For coloring messages
 namespace MainThread {
     class MainThread {
         static void Main(string[] args) {
+            Console.Clear();
+            
             //Loading the language files.
             Lang.Lang.LoadLang();
 
