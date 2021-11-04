@@ -23,15 +23,11 @@ namespace Lang {
                 lines = System.IO.File.ReadAllLines(@"lang/lang.txt");
                 help = System.IO.File.ReadAllText("lang/help.txt").Split("\n\n\n");
                 credits = System.IO.File.ReadAllText("lang/credits.txt");
-                Log(Lang.messages["langFilesReadFile"], "success");
-                System.Console.WriteLine();
             }
             else if(readFromFile == false) {
                 lines = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt").Split("\n");
                 help = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt").Split("\n\n\n");
                 credits = Internet.Internet.View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/credits.txt");
-                Log(Lang.messages["langFilesReadInternet"], "success");
-                System.Console.WriteLine();
             }
 
             //If they dont, then it will ask to download it from the github repository.
@@ -63,9 +59,13 @@ namespace Lang {
                     //Loading files...
                     LoadLang();
                     Log(Lang.messages["langFilesDownloaded"], "success");
+                    Log(Lang.messages["langFilesReadFile"], "success");
+                    System.Console.WriteLine();
                 }
                 else if(answer == "i" || answer == "internet") {
                     LoadLang(false);
+                    Log(Lang.messages["langFilesReadInternet"], "success");
+                    System.Console.WriteLine();
                 }
                 else {
                     //Closing the program.
@@ -84,7 +84,7 @@ namespace Lang {
                     );
                 }
             }
-            
+
             //Removing the raw lines from ram.
             lines = new string[] {};
         }
