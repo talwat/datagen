@@ -1,6 +1,6 @@
-using System;
-using System.Collections.Generic;
-using Pastel;
+using System; //For writing to the console.
+using System.Collections.Generic; //For using a dictionary.
+using Pastel; //For having colored text.
 
 namespace Logging {
     class Logging {

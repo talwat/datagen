@@ -62,14 +62,17 @@ namespace Commands {
                 }
                 else {
                     Log(Lang.Lang.messages["error"], "fatal");
-
-                    //Creating a log with the name as the date of the error.
-                    if(!System.IO.Directory.Exists("logs")) {
-                        System.IO.Directory.CreateDirectory("logs");   
+                    if(Config.Config.configTable["errors"]["showExeptions"]) { Console.WriteLine(Convert.ToString(error.GetBaseException())); }
+                    //Checks if the option "logErrors" is true.
+                    if(Convert.ToBoolean(Config.Config.configTable["errors"]["logErrors"].ToString())) {
+                        //Creating a log with the name as the date of the error.
+                        if(!System.IO.Directory.Exists("logs")) {
+                            System.IO.Directory.CreateDirectory("logs");   
+                        }
+                        string date = DateTime.Now.ToString("yyyy.M.dd");
+                        string time = DateTime.Now.ToString("hh.mm tt");
+                        TextFile.TextFile.TextFileMake("logs/error " + date + " " + time + ".txt", date + " " + time + "\nHappened while executing command: " + inputFinal[0] + "\n\n" + Convert.ToString(error.GetBaseException()));
                     }
-                    string date = DateTime.Now.ToString("yyyy.M.dd");
-                    string time = DateTime.Now.ToString("hh.mm tt");
-                    TextFile.TextFile.TextFileMake("logs/error " + date + " " + time + ".txt", date + " " + time + "\nHappened while executing command: " + inputFinal[0] + "\n\n" + Convert.ToString(error.GetBaseException()));
                 }
                 return 1;
             }

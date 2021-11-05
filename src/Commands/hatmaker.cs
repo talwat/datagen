@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System;
-using System.IO;
-using static Logging.Logging;
+using System.Collections.Generic; //For using a dictionary.
+using static Lang.Lang; //For getting prompt messages.
+using System.IO; //For managing files and directories.
+using static Logging.Logging; //For logging to the console and getting arguements.
 
 public class hatmaker_Command {
     public static void hatmaker(string[] finalInput) {
@@ -15,21 +15,21 @@ public class hatmaker_Extra {
     public static void GetInputs(string[] finalInput) {
         if(finalInput.Length < 9) {
             arguements = new Dictionary<string, string>();
-            Log(Lang.Lang.messages["hatNameAsk"], "input");
+            Log(messages["hatNameAsk"], "input");
             arguements.Add("name", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatDisplayNameAsk"], "input");
+            Log(messages["hatDisplayNameAsk"], "input");
             arguements.Add("displayName", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatDisplayNameColorAsk"], "input");
+            Log(messages["hatDisplayNameColorAsk"], "input");
             arguements.Add("displayNameColor", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatHelmetItemAsk"], "input");
+            Log(messages["hatHelmetItemAsk"], "input");
             arguements.Add("hatItem", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatDisplayItemAsk"], "input");
+            Log(messages["hatDisplayItemAsk"], "input");
             arguements.Add("displayItem", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatHelmetItemCmdAsk"], "input");
+            Log(messages["hatHelmetItemCmdAsk"], "input");
             arguements.Add("hatCmd", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatDisplayItemCmdAsk"], "input");
+            Log(messages["hatDisplayItemCmdAsk"], "input");
             arguements.Add("displayCmd", Input.Input.GetArg());
-            Log(Lang.Lang.messages["hatNamespaceAsk"], "input");
+            Log(messages["hatNamespaceAsk"], "input");
             arguements.Add("namespace", Input.Input.GetArg());
         }
         else if(finalInput.Length >= 9) {
@@ -45,12 +45,12 @@ public class hatmaker_Extra {
     }
 
     public static void MakeFiles() {
-        Log(Lang.Lang.messages["hatMakingFiles"]);
+        Log(messages["hatMakingFiles"]);
         string path = Variables.Variables.path + "\\" + arguements["name"] + "\\";
-        if(Directory.Exists(Variables.Variables.path + "\\" + arguements["name"])) {
-            Directory.Delete(Variables.Variables.path + "\\" + arguements["name"], true);
+        if(Directory.Exists(path + "\\" + arguements["name"])) {
+            Directory.Delete(path + "\\" + arguements["name"], true);
         }
-        Directory.CreateDirectory(Variables.Variables.path + "\\" + arguements["name"]);
+        Directory.CreateDirectory(path + "\\" + arguements["name"]);
         TextFile.TextFile.TextFileMake(
             path + "give.mcfunction",
                 "give @s "
@@ -142,6 +142,6 @@ public class hatmaker_Extra {
                 "execute as @s if entity @s[nbt={Inventory:[{id:\"minecraft:" + arguements["displayItem"] + "\", tag:{" + arguements["name"] +":1b}, Slot:35b}]}] run item replace entity @s inventory.26 with " + arguements["hatItem"] + "{display:{Name:'{\"text\":\"" + arguements["displayName"] + "\",\"color\":\"" + arguements["displayNameColor"] + "\",\"italic\":false}'},HideFlags:2,CustomModelData:" + arguements["hatCmd"] + "," + arguements["name"] + "helm:1b} 1" + "\n" +
                 "execute as @s if entity @s[nbt={Inventory:[{id:\"minecraft:" + arguements["displayItem"] + "\", tag:{" + arguements["name"] +":1b}, Slot:-106b}]}] run item replace entity @s weapon.offhand with " + arguements["hatItem"] + "{display:{Name:'{\"text\":\"" + arguements["displayName"] + "\",\"color\":\"" + arguements["displayNameColor"] + "\",\"italic\":false}'},HideFlags:2,CustomModelData:" + arguements["hatCmd"] + "," + arguements["name"] + "helm:1b} 1"
         );
-        Log(Lang.Lang.messages["hatDone"], "success");
+        Log(messages["hatDone"], "success");
     }
 }

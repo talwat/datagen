@@ -1,4 +1,4 @@
-using System;
+using System; //For getting the core path and normal path.
 
 namespace Variables {
     class Variables {

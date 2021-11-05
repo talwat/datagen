@@ -5,9 +5,6 @@ namespace MainThread {
     class MainThread {
         static void Main(string[] args) {
             Console.Clear();
-            
-            //Loading the language files.
-            Lang.Lang.LoadLang();
 
             //Checking if the program is run by explorer or not to set the core variable.
             if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer") || (args.Length > 0 && args[0] == "debug")) {
@@ -16,8 +13,12 @@ namespace MainThread {
             else {
                 Variables.Variables.core = false;
             }
-            //Loading the config file.
-            Config.Config.LoadConfig();
+            
+            //Load config file.
+            Config.Config.LoadConfig(true);
+
+            //Loading the language files.
+            Lang.Lang.LoadLang();
 
             if(Variables.Variables.core) {
                 Proccessing.AddPATH();

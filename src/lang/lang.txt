@@ -61,3 +61,5 @@ doneLoadingConfig: Done loading config file!
 configNotFound: Config File not found.
 downloadingConfig: Downloading latest config file from the internet...
 doneDownloadingConfig: Downloaded latest config file!
+configReloadAsk: Are you sure you want to reload the config file?
+configReloaded: The config file have been successfully reloaded!

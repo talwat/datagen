@@ -1,7 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using static Logging.Logging;
+//Command for making drop crafting recipes.
+
+using System; //For getting user arguements.
+using System.Collections.Generic; //For using a dictionary.
+using System.IO; //For managing files and directories.
+using static Logging.Logging; //For logging to the console and getting arguements.
 
 public class droprecipe_Command {
     public static void droprecipe(string[] inputfinal) {

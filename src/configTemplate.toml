@@ -2,10 +2,11 @@ title = "Datagen"
 
 [lang]
 #Way the program reads from language files.
-#'internet' means it will automatically read from the internet.
-#'download' means it will automatically download the files.
-#'ask' means it will ask every time the program needs the language files.
-read = "ask"
+#'i' means it will automatically read from the internet.
+#'d' means it will automatically download the files.
+#'a' means it will ask every time the program needs the language files.
+read = "a"
 
 [errors]
-logErrors = true #Set to true if the error should be logged.
+logErrors = true #Decides wether the error should be logged.
+showExeptions = false #Decides wether the exeption should be shown in the console. (Better for debugging)
