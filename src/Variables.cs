@@ -12,5 +12,7 @@ namespace Variables {
         public static string version = "0.5.3 DEV";
         //Core variable to tell the program if it is runned by the terminal or by normal means.
         public static bool core;
+        //Tells the program is the os is windows or not.
+        public static bool windows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
     }
 }

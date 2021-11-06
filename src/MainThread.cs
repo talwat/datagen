@@ -48,7 +48,7 @@ namespace MainThread {
             var scope = EnvironmentVariableTarget.User; // or User
             var oldValue = Environment.GetEnvironmentVariable(name, scope);
             var newValue  = oldValue + @";" + Variables.Variables.corePath + @"\";
-            if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows) && !Environment.GetEnvironmentVariable(name, scope).Contains(Variables.Variables.corePath)) {
+            if(Variables.Variables.windows && !Environment.GetEnvironmentVariable(name, scope).Contains(Variables.Variables.corePath)) {
                 Logging.Logging.Log(Lang.Lang.messages["addPathAsk"]); 
                 Logging.Logging.Log(Lang.Lang.messages["addPathAskWarn"], "warn");
                 Logging.Logging.Log(Lang.Lang.messages["addPathAskInput"], "y/n");
