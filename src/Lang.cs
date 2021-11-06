@@ -12,7 +12,7 @@ namespace Lang {
         public static string[] help = new string[] {"", ""};
         //Variable to store the raw lines from lang.txt
         public static string[] lines;
-        public static void LoadLang(bool readFromFile = true) {
+        public static void LoadLang(bool readFromFile = true, bool loadAgain = false) {
             //Resseting messages hashmap.
             messages = new Dictionary<string, string>();
 
@@ -26,6 +26,7 @@ namespace Lang {
                 lines = File.ReadAllLines(@"lang/lang.txt");
                 help = File.ReadAllText("lang/help.txt").Split("\n\n\n");
                 credits = File.ReadAllText("lang/credits.txt");
+                
             }
             else if(readFromFile == false) {
                 lines = View("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/lang.txt").Split("\n");
@@ -77,13 +78,13 @@ namespace Lang {
                     DownloadFile("https://raw.githubusercontent.com/talwat/datagen/master/src/lang/help.txt", "lang/help.txt", true, false);
                     
                     //Loading files...
-                    LoadLang();
+                    LoadLang(true, true);
                     Log(Lang.messages["langFilesDownloaded"], "success");
                     Log(Lang.messages["langFilesReadFile"], "success");
                     System.Console.WriteLine();
                 }
                 else if(answer == "i" || answer == "internet") {
-                    LoadLang(false);
+                    LoadLang(false, true);
                     Log(Lang.messages["langFilesReadInternet"], "success");
                     System.Console.WriteLine();
                 }
@@ -92,7 +93,10 @@ namespace Lang {
                     System.Environment.Exit(0);
                 }
             }
-
+            
+            //Loading Message
+            if(!loadAgain && Variables.Variables.core) { Log("Loading lang files..."); }
+            
             //Inserting the raw lines into the dictionary.
             foreach(string line in lines) {
                 //Checking if the line should be read. (If it isn't nothing and it doesn't start with '#')
@@ -104,6 +108,9 @@ namespace Lang {
                     );
                 }
             }
+            
+            //Done Loading Message
+            if(!loadAgain && Variables.Variables.core) { Log("Done loading lang files!\n", "success"); }
 
             //Removing the raw lines from ram.
             lines = new string[] {};
