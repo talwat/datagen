@@ -45,22 +45,24 @@ Unfortunately, there isn't a finished release yet. You will need to use the othe
 ### Compiling from source
 *(Not recommended)*
 
-This will probably not work half of the time, so proceed with caution.
-
 You will need:
 * [Git](https://git-scm.com/)
 * [DotNet](https://dotnet.microsoft.com/) *(Most Windows 10 PC's have it pre-installed)*
 
 #### What to do
+**WINDOWS**
+
 You first need to clone the repository. Do these commands in the terminal.
 ```sh
 git clone https://github.com/talwat/datagen.git
 cd <the place you cloned the repository in>/datagen
-dotnet publish
+scripts/release.bat
 ```
 
-Then, go to the place you cloned it in with the file explorer, and from there go to `\bin\Debug\net5.0\publish`.
-Finally, you will see a few files. Click on the .exe file, and you have successfully launched datagen.
+After, to run the program, do
+```sh
+release/Datagen
+```
 
 ## Libraries
 The libraries used in datagen are:
