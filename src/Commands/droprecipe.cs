@@ -47,10 +47,10 @@ public class droprecipe_Extra {
         Log(Lang.Lang.messages["dropRecipeMakingFiles"]);
 
         string path = Variables.Variables.path + "\\" + recipeName + "\\";
-        if(Directory.Exists(Variables.Variables.path + "\\" + recipeName)) {
-            Directory.Delete(Variables.Variables.path + "\\" + recipeName, true);
+        if(Directory.Exists(path)) {
+            Directory.Delete(path, true);
         }
-        Directory.CreateDirectory(Variables.Variables.path + "\\" + recipeName);
+        Directory.CreateDirectory(path);
 
         string text = "execute as ";
         if(Commands.Commands.OnlyContains(arguements[0][1], ' ')) {
