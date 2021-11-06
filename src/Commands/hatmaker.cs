@@ -47,10 +47,10 @@ public class hatmaker_Extra {
     public static void MakeFiles() {
         Log(messages["hatMakingFiles"]);
         string path = Variables.Variables.path + "\\" + arguements["name"] + "\\";
-        if(Directory.Exists(path + "\\" + arguements["name"])) {
-            Directory.Delete(path + "\\" + arguements["name"], true);
+        if(Directory.Exists(path)) {
+            Directory.Delete(path, true);
         }
-        Directory.CreateDirectory(path + "\\" + arguements["name"]);
+        Directory.CreateDirectory(path);
         TextFile.TextFile.TextFileMake(
             path + "give.mcfunction",
                 "give @s "
