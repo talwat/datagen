@@ -64,6 +64,14 @@ After, to run the program, do
 release/Datagen
 ```
 
+**MACOS & LINUX**
+
+While it is possible to run datagen on these, it isn't very stable whatsoever for now.
+
+There are shell scripts for macOS and linux. *(Linux: `scripts/release.sh` MacOS: `scripts/release_macOS.sh`)*
+
+Downloading files from the internet is very, very buggy.
+
 ## Libraries
 The libraries used in datagen are:
 * [Pastel](https://github.com/silkfire/Pastel)
