@@ -44,23 +44,31 @@ namespace Lang {
                 //Answer Variable
                 string answer = "";
 
-                //Checking the config file.
-                switch(Config.Config.configTable["lang"]["read"].ToString().ToLower()) {
-                    case "a":
-                    case "ask":
-                        //Getting the answer from the user if the config option is 'ask'.
-                        Log("The language files can't be found.", "error");
-                        Log("Would you like to download the latest language files, or would you like to read them from the internet? (d/i)", "input");
-                        answer = System.Console.ReadLine();
-                    break;
-                    case "i":
-                    case "internet":
-                        answer = "i";
-                    break;
-                    case "d":
-                    case "download":
-                        answer = "d";
-                    break;
+                if(Variables.Variables.windows) {
+                    //Getting the config file.
+                    string configLang = Config.Config.configTable["lang"]["read"].ToString().ToLower();
+                    
+                    //Checking the config file.
+                    switch(configLang) {
+                        case "a":
+                        case "ask":
+                            //Getting the answer from the user if the config option is 'ask'.
+                            Log("The language files can't be found.", "error");
+                            Log("Would you like to download the latest language files, or would you like to read them from the internet? (d/i)", "input");
+                            answer = System.Console.ReadLine();
+                        break;
+                        case "i":
+                        case "internet":
+                            answer = "i";
+                        break;
+                        case "d":
+                        case "download":
+                            answer = "d";
+                        break;
+                    }
+                }
+                else {
+                    answer = "i";
                 }
                 
                 //Checking the answer.

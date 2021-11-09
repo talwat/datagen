@@ -15,7 +15,7 @@ namespace Config {
                 if(hardCodeLang && Variables.Variables.core) { Log("Done loading config file!\n", "success"); }
                 else if(Variables.Variables.core) { Log(Lang.Lang.messages["doneLoadingConfig"] + "\n", "success"); }
             }
-            else {
+            else if(Variables.Variables.windows) {
                 if(hardCodeLang && Variables.Variables.core) {
                     Log("Config File not found.", "error");
                     Log("Downloading latest config file from the internet...");

@@ -21,7 +21,7 @@ namespace Commands {
         }
         public static void GetInput() {
             //Writes the path and ">"
-            Console.Write(Variables.Variables.path + ">");
+            Console.Write(path + ">");
 
             //Gets the raw input and splits it to get the arguments and main command.
             rawInput = Console.ReadLine();
@@ -62,20 +62,30 @@ namespace Commands {
                 }
                 else {
                     Log(Lang.Lang.messages["error"], "fatal");
-                    if(Config.Config.configTable["errors"]["showExeptions"]) { Console.WriteLine(Convert.ToString(error.GetBaseException())); }
+                    if(Config.Config.configTable["errors"]["showExeptions"] && windows) { Console.WriteLine(Convert.ToString(error.GetBaseException())); }
                     //Checks if the option "logErrors" is true.
+
+                    if(!windows) {
+                        LogFile(inputFinal, error);
+                        return 0;
+                    }
                     if(Convert.ToBoolean(Config.Config.configTable["errors"]["logErrors"].ToString())) {
-                        //Creating a log with the name as the date of the error.
-                        if(!System.IO.Directory.Exists("logs")) {
-                            System.IO.Directory.CreateDirectory("logs");   
-                        }
-                        string date = DateTime.Now.ToString("yyyy.M.dd");
-                        string time = DateTime.Now.ToString("hh.mm tt");
-                        TextFile.TextFile.TextFileMake("logs/error " + date + " " + time + ".txt", date + " " + time + "\nHappened while executing command: " + inputFinal[0] + "\n\n" + Convert.ToString(error.GetBaseException()));
+                        LogFile(inputFinal, error);
+                        return 0;
                     }
                 }
                 return 1;
             }
+        }
+
+        public static void LogFile(string[] inputFinal, Exception error) {
+            //Creating a log with the name as the date of the error.
+            if(!System.IO.Directory.Exists("logs")) {
+                System.IO.Directory.CreateDirectory("logs");   
+            }
+            string date = DateTime.Now.ToString("yyyy.M.dd");
+            string time = DateTime.Now.ToString("hh.mm tt");
+            TextFile.TextFile.TextFileMake("logs/error " + date + " " + time + ".txt", date + " " + time + "\nHappened while executing command: " + inputFinal[0] + "\n\n" + Convert.ToString(error.GetBaseException()));
         }
     }
 }
