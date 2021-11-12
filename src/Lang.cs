@@ -36,6 +36,8 @@ namespace Lang {
 
             //If they dont, then it will ask to download it from the github repository.
             else {
+                Log("The language files can't be found.", "error");
+                
                 //Deleting the language directory. (To avoid having multiple of the same file)
                 if(Directory.Exists("lang")) {
                     Directory.Delete("lang", true);
@@ -53,7 +55,6 @@ namespace Lang {
                         case "a":
                         case "ask":
                             //Getting the answer from the user if the config option is 'ask'.
-                            Log("The language files can't be found.", "error");
                             Log("Would you like to download the latest language files, or would you like to read them from the internet? (d/i)", "input");
                             answer = System.Console.ReadLine();
                         break;

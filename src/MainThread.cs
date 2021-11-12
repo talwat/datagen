@@ -7,7 +7,7 @@ namespace MainThread {
             Console.Clear();
 
             //Checking if the program is run by explorer or not to set the core variable.
-            if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer") || (args.Length > 0 && args[0] == "debug")) {
+            if((args.Length == 0 && Proccessing.GetParentProcessName() == "explorer") || (args.Length > 0 && args[0] == "core")) {
                 Variables.Variables.core = true;
             }
             else {
