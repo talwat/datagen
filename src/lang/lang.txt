@@ -10,6 +10,7 @@ addPathAskInput: Do you want to add the value to PATH?
 addedPath: Added value to PATH!
 notAddingPath: Not adding value to PATH.
 coreOnly: This command is only available for the core version of the program, please use the normal command.
+nothingInputted: 
 
 #Downloading Source
 sourceWarning: Compiling from source is not recommend.
