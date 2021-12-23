@@ -1,5 +1,9 @@
 DataGen
 ===
+# DO NOT USE DATAGEN
+Datagen is not maintained anymore, and is very, very buggy.
+It was a great learning tool, but now its pretty much dead, so please do not use it.
+It also has a lot of issues on linux, and crashes every two seconds.
 
 ## Info
 **DataGen** is a tool used to generate certain elements of a minecraft [datapack]("https://minecraft.fandom.com/wiki/Data_pack").
